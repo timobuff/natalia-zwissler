@@ -5,63 +5,41 @@ import Hero from '../components/Hero.astro';
 import KategorienGrid from '../components/KategorienGrid.astro';
 import Footer from '../components/Footer.astro';
 
+let hero = { titel: "Wasser · Erde · Feuer · Hände", untertitel: "Handgefertigte Unikate aus Leidenschaft", ctaText: "Kollektion entdecken" };
+let intro = { titel: "Willkommen im Atelier", text: "Ton ist für mich mehr als nur Material. Es ist der Dialog zwischen der Rauheit der Erde und der Sanftheit der Formgebung. In meiner Werkstatt in Weinfelden entstehen Stücke, die Zeitlosigkeit und haptische Präsenz vereinen – gebrannt, um den Alltag zu bereichern." };
+
+try { hero = await import('../content/hero.json'); } catch(e) {}
+try { intro = await import('../content/intro.json'); } catch(e) {}
+
 const kategorien = [
-  {
-    titel: "Baukeramik",
-    bild: "https://lh3.googleusercontent.com/aida-public/AB6AXuCvcCWp5iG943OkjNYU7a_-Bu2LKZ6E0AxEQsV24bkDdV-p4A4gPujYm7CyE_Hhl3mrZGYIY6BmzD3dODoUi6-WQW0Hi1TWtJo67efpJpb4YwTYKxH7qxl_czJ-4I2B6HoKv1po2OIUjZbJkgECrzFiOeDe9UJu9t_OqcKWTAcE1EKf36qNlc3-XMsu42xMuBg6lrUbsSR0ojOSw4GX1FGl-_j5KrwXptSN1sbb9uORClWdWYQr88BlbaTRMkbYuOFyzb5QHUnEzAE",
-    link: "#"
-  },
-  {
-    titel: "Gebrauchskeramik",
-    bild: "https://lh3.googleusercontent.com/aida-public/AB6AXuDFDyHbDU6OsIH0eit4UjXjBxQqYRI_kh88Se8wF4YjJZv-lr_gWsRbNzc1uCqNDC-M_dVvZekdiRXHJKH5W4aRHozWUO6JzSz6WuexmbDYpe__UzybP7ZpajbQ2xOia2tCuTXoiVImeqSV9QfsuUIswHVuz7ZfSACvj0risqp5gS-fObpJRiwoEyV9vsQziJr-SIIfitD9nwM942QIn-MWBt1kO0QY2DWO2UfPQ7lEKPY0PgJUKNvTbtU3qYvWiSvTtxXTSTviP0k",
-    link: "#"
-  },
-  {
-    titel: "Gartenkeramik",
-    bild: "https://lh3.googleusercontent.com/aida-public/AB6AXuBUvLgNENdOqN9itRP2s-Y1-mBETS4n-x6ozDqRpsqFPnUPBGL_4pbD4CMyxF4_QdWYaRw5ENW8xL22hzzvNd9soT57pm-ZTcigt2LcAhVeKnAuOC1HaYZ5fyEq1q37sa4CuTGNRjRcPGV13tO_c3K4aXChuCyDlGwU4DTjEkOwPRs9DBvv_qhkfd5RVSUp-IryTgwA5qgByFOuN2bVgZs9TthkPaSQ57c0wsh7jzLVfK25wEXfgcs5yAFNMFhCkpkz8RnSYGSpFCU",
-    link: "#"
-  },
-  {
-    titel: "Porzellanleuchten",
-    bild: "https://lh3.googleusercontent.com/aida-public/AB6AXuDjazaAHR3PIY83oiY9tQeAOfhPaTUNkKqEpFmSrP87vhBosShOgxZIXJTaCQwpGwjO3DzlaaDq4AbqJphvbjpkVd53Y19ytNznN-EMwUTrl8iOP4RKSKpDwF-g7MxNPVh2pFAtxN0Yc8fxKdOV4Rutvks0wLwFIC_IvJ8KSAxoOjiIxLicYQu0fF31h-2RMawxmngk30HaiHFN47FQBcvlSWBsz-x71rtU5F28114bYmscdy2e4M5TfKKXcWgF04IiUiDU1bHcHxo",
-    link: "#"
-  },
-  {
-    titel: "Urnen",
-    bild: "https://lh3.googleusercontent.com/aida-public/AB6AXuBa-_yN85EOfNXhxuZJCLYh7CNG3B0QAzidlhFYKYIsIt4jHREroP44TTS3e2O71e8p359Eda1eJ-EtpEAb6vBzndpr0AlsnHPZ--J1pWm3Oijwbi61X3lGt-RrE4JyHfmK7IZ8MfY2IvG9RYzST_o8YlSFa_ovx8szDvHk0zg3TJawRdqq50nGVUv9GIbh4U_ABctalGFj5fFuETmhvge2ByK1jIHhCS6wr0bmg1tyWg0HkX_V-FOcGf4K8VCjCSDiW1BmyWVl0GI",
-    link: "#"
-  },
-  {
-    titel: "Künstlerurnen",
-    bild: "https://lh3.googleusercontent.com/aida-public/AB6AXuAJGpmbP233M9cxJeMRe69I6gwDOoNSm906KkGxTNymkQ-9mbw_F6_RnvWBMTmMMBFo9s0bjZyXiSRHYKM9mg8OeKn3K5AC_M60Qd-jFPkkVTw675hNhZ3zS0segXEGB14whuvNWgS1BffPZFyr7My4GrGfokdjulb0sN4AYLEcGi9wGl6gQXR1fYWsvRs2oAQGk5s-xxw8NjiDIRtG5X_o9dcASNXKOxxdOwI8Itibe3-6qBn6K13ASJfgqSN85C-4atK-gAob3Go",
-    link: "#"
-  }
+  { titel: "Baukeramik", bild: "https://lh3.googleusercontent.com/aida-public/AB6AXuCvcCWp5iG943OkjNYU7a_-Bu2LKZ6E0AxEQsV24bkDdV-p4A4gPujYm7CyE_Hhl3mrZGYIY6BmzD3dODoUi6-WQW0Hi1TWtJo67efpJpb4YwTYKxH7qxl_czJ-4I2B6HoKv1po2OIUjZbJkgECrzFiOeDe9UJu9t_OqcKWTAcE1EKf36qNlc3-XMsu42xMuBg6lrUbsSR0ojOSw4GX1FGl-_j5KrwXptSN1sbb9uORClWdWYQr88BlbaTRMkbYuOFyzb5QHUnEzAE", link: "#" },
+  { titel: "Gebrauchskeramik", bild: "https://lh3.googleusercontent.com/aida-public/AB6AXuDFDyHbDU6OsIH0eit4UjXjBxQqYRI_kh88Se8wF4YjJZv-lr_gWsRbNzc1uCqNDC-M_dVvZekdiRXHJKH5W4aRHozWUO6JzSz6WuexmbDYpe__UzybP7ZpajbQ2xOia2tCuTXoiVImeqSV9QfsuUIswHVuz7ZfSACvj0risqp5gS-fObpJRiwoEyV9vsQziJr-SIIfitD9nwM942QIn-MWBt1kO0QY2DWO2UfPQ7lEKPY0PgJUKNvTbtU3qYvWiSvTtxXTSTviP0k", link: "#" },
+  { titel: "Gartenkeramik", bild: "https://lh3.googleusercontent.com/aida-public/AB6AXuBUvLgNENdOqN9itRP2s-Y1-mBETS4n-x6ozDqRpsqFPnUPBGL_4pbD4CMyxF4_QdWYaRw5ENW8xL22hzzvNd9soT57pm-ZTcigt2LcAhVeKnAuOC1HaYZ5fyEq1q37sa4CuTGNRjRcPGV13tO_c3K4aXChuCyDlGwU4DTjEkOwPRs9DBvv_qhkfd5RVSUp-IryTgwA5qgByFOuN2bVgZs9TthkPaSQ57c0wsh7jzLVfK25wEXfgcs5yAFNMFhCkpkz8RnSYGSpFCU", link: "#" },
+  { titel: "Porzellanleuchten", bild: "https://lh3.googleusercontent.com/aida-public/AB6AXuDjazaAHR3PIY83oiY9tQeAOfhPaTUNkKqEpFmSrP87vhBosShOgxZIXJTaCQwpGwjO3DzlaaDq4AbqJphvbjpkVd53Y19ytNznN-EMwUTrl8iOP4RKSKpDwF-g7MxNPVh2pFAtxN0Yc8fxKdOV4Rutvks0wLwFIC_IvJ8KSAxoOjiIxLicYQu0fF31h-2RMawxmngk30HaiHFN47FQBcvlSWBsz-x71rtU5F28114bYmscdy2e4M5TfKKXcWgF04IiUiDU1bHcHxo", link: "#" },
+  { titel: "Urnen", bild: "https://lh3.googleusercontent.com/aida-public/AB6AXuBa-_yN85EOfNXhxuZJCLYh7CNG3B0QAzidlhFYKYIsIt4jHREroP44TTS3e2O71e8p359Eda1eJ-EtpEAb6vBzndpr0AlsnHPZ--J1pWm3Oijwbi61X3lGt-RrE4JyHfmK7IZ8MfY2IvG9RYzST_o8YlSFa_ovx8szDvHk0zg3TJawRdqq50nGVUv9GIbh4U_ABctalGFj5fFuETmhvge2ByK1jIHhCS6wr0bmg1tyWg0HkX_V-FOcGf4K8VCjCSDiW1BmyWVl0GI", link: "#" },
+  { titel: "Künstlerurnen", bild: "https://lh3.googleusercontent.com/aida-public/AB6AXuAJGpmbP233M9cxJeMRe69I6gwDOoNSm906KkGxTNymkQ-9mbw_F6_RnvWBMTmMMBFo9s0bjZyXiSRHYKM9mg8OeKn3K5AC_M60Qd-jFPkkVTw675hNhZ3zS0segXEGB14whuvNWgS1BffPZFyr7My4GrGfokdjulb0sN4AYLEcGi9wGl6gQXR1fYWsvRs2oAQGk5s-xxw8NjiDIRtG5X_o9dcASNXKOxxdOwI8Itibe3-6qBn6K13ASJfgqSN85C-4atK-gAob3Go", link: "#" }
 ];
 ---
 <BaseLayout title="Natalia Zwissler Keramik">
   <Nav />
 
   <Hero
-    titel="Wasser · Erde · Feuer · Hände"
-    untertitel="Handgefertigte Unikate aus Leidenschaft"
+    titel={hero.titel}
+    untertitel={hero.untertitel}
+    ctaText={hero.ctaText}
     bild="https://lh3.googleusercontent.com/aida-public/AB6AXuB29x2jqORguNAUKW_k5yWv0dBzJv9okIhd8w6n26dkOL9H7qoTk_lYLoGZSD6C_SrIh62HMsoZ7ZHBUHFCULR3-IU9TZl92Ch6eH7dANCqesl31iMXZKMMUFjKFj5b6LyYnLrLmWLRS-EcFIUwywBgpgmyQL2WTt7kGPUPAOQR52SH6RrRYyRVHKP4ywxHsCnjRE663G8KZ0BtxeSCQffdXapgYkrnaew1WtxGzF_WGJRJcCDxyKxU8z-ZWMFDyPHChYlmCmzujhQ"
-    ctaText="Kollektion entdecken"
     ctaLink="#gallery"
   />
 
-  <!-- Intro -->
   <section class="py-[100px] px-8 bg-surface">
     <div class="max-w-[640px] mx-auto text-center">
-      <h2 class="font-headline text-4xl text-on-surface mb-8">Willkommen im Atelier</h2>
-      <p class="font-body text-lg leading-relaxed text-on-surface-variant">
-        Ton ist für mich mehr als nur Material. Es ist der Dialog zwischen der Rauheit der Erde und der Sanftheit der Formgebung. In meiner Werkstatt in Weinfelden entstehen Stücke, die Zeitlosigkeit und haptische Präsenz vereinen – gebrannt, um den Alltag zu bereichern.
-      </p>
+      <h2 class="font-headline text-4xl text-on-surface mb-8">{intro.titel}</h2>
+      <p class="font-body text-lg leading-relaxed text-on-surface-variant">{intro.text}</p>
     </div>
   </section>
 
   <KategorienGrid kategorien={kategorien} />
 
-  <!-- Atelier -->
   <section class="py-24 bg-[#EDE8E0] px-8 md:px-16 overflow-hidden">
     <div class="max-w-screen-2xl mx-auto flex flex-col md:flex-row items-center gap-16">
       <div class="w-full md:w-1/2">
@@ -70,50 +48,33 @@ const kategorien = [
         <div class="space-y-6">
           <div class="flex items-start gap-4">
             <span class="material-symbols-outlined text-primary mt-1">location_on</span>
-            <p class="font-body text-on-surface-variant leading-relaxed">
-              Musterweg 12<br/>8570 Weinfelden, Schweiz
-            </p>
+            <p class="font-body text-on-surface-variant leading-relaxed">Musterweg 12<br/>8570 Weinfelden, Schweiz</p>
           </div>
           <div class="flex items-start gap-4">
             <span class="material-symbols-outlined text-primary mt-1">schedule</span>
-            <p class="font-body text-on-surface-variant leading-relaxed">
-              Freitag: 14:00 – 18:00 Uhr<br/>
-              Samstag: 10:00 – 16:00 Uhr<br/>
-              Und nach Vereinbarung.
-            </p>
+            <p class="font-body text-on-surface-variant leading-relaxed">Freitag: 14:00 – 18:00 Uhr<br/>Samstag: 10:00 – 16:00 Uhr<br/>Und nach Vereinbarung.</p>
           </div>
         </div>
       </div>
       <div class="w-full md:w-1/2 relative">
         <div class="aspect-square bg-surface-container-highest relative z-10 p-4 border border-outline-variant/20">
-          <img
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAadddWB9baeUTMUBuLiWDYCPRgxijzOsuF-xbN0tyYrtuJkGCtB2W2Snj0KsLSFCwGAUPu_eCcnWo8mjNj_9bPqTKZBzfTI4cqPwv8FxiYq4gmhcMh5XeWzSrHEMpOyYAst1yNyqCFKSw-bSEOB0CyxnFqeOW_zDA3ve1E6NwM7hN3fubD_qHFABhJBfbvjm1OQzgNbqL8TcNKy7rcjvMoSHO9JNMhgWWGWblwQ46JKKVxNNSUckj0wYPhWz8SUeOrz4eHqDkupf4"
-            alt="Atelier"
-            class="w-full h-full object-cover"
-          />
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAadddWB9baeUTMUBuLiWDYCPRgxijzOsuF-xbN0tyYrtuJkGCtB2W2Snj0KsLSFCwGAUPu_eCcnWo8mjNj_9bPqTKZBzfTI4cqPwv8FxiYq4gmhcMh5XeWzSrHEMpOyYAst1yNyqCFKSw-bSEOB0CyxnFqeOW_zDA3ve1E6NwM7hN3fubD_qHFABhJBfbvjm1OQzgNbqL8TcNKy7rcjvMoSHO9JNMhgWWGWblwQ46JKKVxNNSUckj0wYPhWz8SUeOrz4eHqDkupf4" alt="Atelier" class="w-full h-full object-cover" />
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Kurse -->
   <section class="py-[100px] px-8 md:px-16 bg-surface">
     <div class="max-w-screen-2xl mx-auto flex flex-col lg:flex-row gap-20">
       <div class="lg:w-1/2 order-2 lg:order-1">
         <div class="aspect-[16/9] bg-surface-container-highest relative overflow-hidden editorial-shadow">
-          <img
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7HJXLfLTZ3-xsQ6Epexhqdf9951ZBlhQwCI2sXOPCqkUmC2GTxUmhPoLCcgcIW7RpGa8ur7OuPNtnoJ9AKetozDzpwC-QjXkdzhylQGcxpBe5mb9jMtc8Fp6vzm2kkxMEMXF6uwv7eymWXaob9e7-LKLjZFBB3CxppocOkcjweDRk5MtwTsvQKFg1OqEp8w4aATJXVMMPVrUdMHAEOsjdsVrMQNcWGKdCVPGufs2jLy7pIH8MSF46VwMigkWdpApdATrpUbCqI8"
-            alt="Töpferkurs"
-            class="w-full h-full object-cover"
-          />
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7HJXLfLTZ3-xsQ6Epexhqdf9951ZBlhQwCI2sXOPCqkUmC2GTxUmhPoLCcgcIW7RpGa8ur7OuPNtnoJ9AKetozDzpwC-QjXkdzhylQGcxpBe5mb9jMtc8Fp6vzm2kkxMEMXF6uwv7eymWXaob9e7-LKLjZFBB3CxppocOkcjweDRk5MtwTsvQKFg1OqEp8w4aATJXVMMPVrUdMHAEOsjdsVrMQNcWGKdCVPGufs2jLy7pIH8MSF46VwMigkWdpApdATrpUbCqI8" alt="Töpferkurs" class="w-full h-full object-cover" />
         </div>
       </div>
       <div class="lg:w-1/2 order-1 lg:order-2 flex flex-col justify-center">
         <span class="font-body uppercase tracking-[0.1em] text-primary text-sm font-bold block mb-4">Bildung</span>
         <h2 class="font-headline text-4xl lg:text-5xl mb-8 leading-tight">Töpferkurse: Das Handwerk selbst erleben.</h2>
-        <p class="font-body text-lg text-on-surface-variant leading-relaxed mb-10">
-          In meinen Kursen vermittle ich die Grundlagen und Fortgeschrittenentechniken der Keramik. Ob an der Drehscheibe oder in der Aufbautechnik – entdecken Sie die meditativen Eigenschaften des Materials.
-        </p>
+        <p class="font-body text-lg text-on-surface-variant leading-relaxed mb-10">In meinen Kursen vermittle ich die Grundlagen und Fortgeschrittenentechniken der Keramik. Ob an der Drehscheibe oder in der Aufbautechnik – entdecken Sie die meditativen Eigenschaften des Materials.</p>
         <div class="flex flex-wrap gap-6">
           <a href="#" class="bg-primary text-white px-10 py-4 font-body uppercase tracking-widest text-sm hover:bg-primary-container transition-all">Aktuelle Kurse</a>
           <a href="#" class="border border-outline px-10 py-4 font-body uppercase tracking-widest text-sm hover:border-primary transition-all">Gutschein kaufen</a>
