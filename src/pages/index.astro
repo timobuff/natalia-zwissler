@@ -8,8 +8,8 @@ import Footer from '../components/Footer.astro';
 let hero = { titel: "Wasser · Erde · Feuer · Hände", untertitel: "Handgefertigte Unikate aus Leidenschaft", ctaText: "Kollektion entdecken" };
 let intro = { titel: "Willkommen im Atelier", text: "Ton ist für mich mehr als nur Material. Es ist der Dialog zwischen der Rauheit der Erde und der Sanftheit der Formgebung. In meiner Werkstatt in Weinfelden entstehen Stücke, die Zeitlosigkeit und haptische Präsenz vereinen – gebrannt, um den Alltag zu bereichern." };
 
-try { hero = await import('../content/hero.json'); } catch(e) {}
-try { intro = await import('../content/intro.json'); } catch(e) {}
+try { hero = await import('../content/einstellungen/hero.json'); } catch(e) {}
+try { intro = await import('../content/einstellungen/intro.json'); } catch(e) {}
 
 const kategorien = [
   { titel: "Baukeramik", bild: "https://lh3.googleusercontent.com/aida-public/AB6AXuCvcCWp5iG943OkjNYU7a_-Bu2LKZ6E0AxEQsV24bkDdV-p4A4gPujYm7CyE_Hhl3mrZGYIY6BmzD3dODoUi6-WQW0Hi1TWtJo67efpJpb4YwTYKxH7qxl_czJ-4I2B6HoKv1po2OIUjZbJkgECrzFiOeDe9UJu9t_OqcKWTAcE1EKf36qNlc3-XMsu42xMuBg6lrUbsSR0ojOSw4GX1FGl-_j5KrwXptSN1sbb9uORClWdWYQr88BlbaTRMkbYuOFyzb5QHUnEzAE", link: "#" },
