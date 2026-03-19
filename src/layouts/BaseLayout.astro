@@ -65,7 +65,17 @@ const { title = "Natalia Zwissler Keramik" } = Astro.props;
       -webkit-font-smoothing: antialiased;
     }
   </style>
-</head>
+</head><script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+</script>
 <body class="font-body">
   <slot />
 </body>
