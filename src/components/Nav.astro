@@ -1,0 +1,28 @@
+---
+const links = [
+  { label: "Schauraum", href: "#" },
+  { label: "Ausstellungen", href: "#" },
+  { label: "Kurse", href: "#" },
+  { label: "Impressionen", href: "#" },
+  { label: "Portrait", href: "#" },
+  { label: "Kontakt", href: "#" },
+];
+---
+<nav class="fixed top-0 w-full h-[72px] z-50 bg-[#FEF9F2]/80 backdrop-blur-md flex justify-between items-center px-8 md:px-16">
+  <div class="flex items-baseline gap-2 text-[#1D1B18] font-serif text-xl italic">
+    Natalia Zwissler
+  </div>
+  <div class="hidden md:flex gap-8 items-center">
+    {links.map(link => (
+      <a
+        href={link.href}
+        class="text-[#1D1B18] font-sans uppercase tracking-[0.1em] text-[14px] hover:text-[#7B533C] transition-colors duration-300"
+      >
+        {link.label}
+      </a>
+    ))}
+  </div>
+  <div class="md:hidden">
+    <span class="material-symbols-outlined">menu</span>
+  </div>
+</nav>

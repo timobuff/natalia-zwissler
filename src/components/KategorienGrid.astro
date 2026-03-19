@@ -1,0 +1,40 @@
+---
+export interface Kategorie {
+  titel: string;
+  bild: string;
+  link: string;
+}
+
+export interface Props {
+  kategorien: Kategorie[];
+}
+
+const { kategorien } = Astro.props;
+---
+<section class="py-[100px] px-8 md:px-16 bg-surface-container-low" id="gallery">
+  <div class="max-w-screen-2xl mx-auto">
+    <div class="mb-16">
+      <span class="font-body uppercase tracking-[0.1em] text-primary text-sm font-bold">Kategorien</span>
+      <h2 class="font-headline text-4xl mt-4">Das Schaffen</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {kategorien.map(k => (
+        <div class="group relative aspect-[4/5] bg-surface-container-highest overflow-hidden cursor-pointer">
+          <img
+            src={k.bild}
+            alt={k.titel}
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-on-background/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="absolute bottom-8 left-8 right-8 flex justify-between items-end text-surface opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+            <div>
+              <p class="font-body uppercase tracking-widest text-xs mb-1">Entdecken</p>
+              <h3 class="font-headline text-2xl">{k.titel}</h3>
+            </div>
+            <span class="material-symbols-outlined">arrow_forward</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

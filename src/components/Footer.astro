@@ -1,0 +1,51 @@
+---
+export interface Props {
+  copyright?: string;
+}
+const { copyright = "© Natalia Zwissler Keramik. Webdesign by webwerk.digital" } = Astro.props;
+
+const sortiment = [
+  "Baukeramik", "Gebrauchskeramik", "Gartenkeramik", "Porzellanleuchten", "Urnen"
+];
+---
+<footer class="bg-[#32302C] text-[#FEF9F2] pt-[80px] pb-[40px]">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-12 px-8 md:px-24 max-w-screen-2xl mx-auto">
+    <div class="flex flex-col">
+      <div class="text-[#FEF9F2] font-serif text-2xl mb-4 italic">Natalia Zwissler</div>
+      <p class="font-body text-[#F2EDE7]/80 leading-relaxed text-sm tracking-wide max-w-xs">
+        Keramik ist das Gedächtnis der Erde, geformt durch Hände und veredelt durch Feuer.
+      </p>
+    </div>
+    <div>
+      <h4 class="font-headline text-[#FEF9F2] text-2xl mb-6">Sortiment</h4>
+      <ul class="space-y-3">
+        {sortiment.map(item => (
+          <li>
+            <a href="#" class="text-[#F2EDE7]/80 font-body text-sm tracking-wide hover:text-[#FEF9F2] underline-offset-4 hover:underline transition-all">
+              {item}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-headline text-[#FEF9F2] text-2xl mb-6">Rechtliches</h4>
+      <ul class="space-y-3">
+        {["Impressum", "Datenschutz", "Kontakt"].map(item => (
+          <li>
+            <a href="#" class="text-[#F2EDE7]/80 font-body text-sm tracking-wide hover:text-[#FEF9F2] underline-offset-4 hover:underline transition-all">
+              {item}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <div class="mt-8 flex gap-4">
+        <span class="material-symbols-outlined opacity-60 hover:opacity-100 cursor-pointer transition-opacity">photo_camera</span>
+        <span class="material-symbols-outlined opacity-60 hover:opacity-100 cursor-pointer transition-opacity">mail</span>
+      </div>
+    </div>
+  </div>
+  <div class="mt-20 border-t border-[#FEF9F2]/10 pt-10 px-8 text-center">
+    <p class="font-body text-[#F2EDE7]/40 text-xs tracking-widest uppercase">{copyright}</p>
+  </div>
+</footer>

@@ -1,0 +1,42 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+  - name: "einstellungen"
+    label: "Einstellungen"
+    files:
+      - label: "Hero Bereich"
+        name: "hero"
+        file: "src/content/hero.json"
+        fields:
+          - { label: "Haupttitel", name: "titel", widget: "string" }
+          - { label: "Untertitel", name: "untertitel", widget: "string" }
+          - { label: "Button Text", name: "ctaText", widget: "string" }
+
+      - label: "Intro Text"
+        name: "intro"
+        file: "src/content/intro.json"
+        fields:
+          - { label: "Überschrift", name: "titel", widget: "string" }
+          - { label: "Text", name: "text", widget: "text" }
+
+      - label: "Atelier Infos"
+        name: "atelier"
+        file: "src/content/atelier.json"
+        fields:
+          - { label: "Adresse", name: "adresse", widget: "text" }
+          - { label: "Öffnungszeiten", name: "oeffnungszeiten", widget: "text" }
+
+  - name: "kategorien"
+    label: "Kategorien"
+    folder: "src/content/kategorien"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Titel", name: "titel", widget: "string" }
+      - { label: "Bild", name: "bild", widget: "image" }
+      - { label: "Link", name: "link", widget: "string", default: "#" }

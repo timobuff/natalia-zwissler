@@ -1,0 +1,38 @@
+---
+export interface Props {
+  titel: string;
+  untertitel: string;
+  bild: string;
+  ctaText: string;
+  ctaLink: string;
+}
+
+const {
+  titel = "Wasser · Erde · Feuer · Hände",
+  untertitel = "Handgefertigte Unikate aus Leidenschaft",
+  bild = "https://lh3.googleusercontent.com/aida-public/AB6AXuB29x2jqORguNAUKW_k5yWv0dBzJv9okIhd8w6n26dkOL9H7qoTk_lYLoGZSD6C_SrIh62HMsoZ7ZHBUHFCULR3-IU9TZl92Ch6eH7dANCqesl31iMXZKMMUFjKFj5b6LyYnLrLmWLRS-EcFIUwywBgpgmyQL2WTt7kGPUPAOQR52SH6RrRYyRVHKP4ywxHsCnjRE663G8KZ0BtxeSCQffdXapgYkrnaew1WtxGzF_WGJRJcCDxyKxU8z-ZWMFDyPHChYlmCmzujhQ",
+  ctaText = "Kollektion entdecken",
+  ctaLink = "#gallery"
+} = Astro.props;
+---
+<header class="relative h-screen w-full overflow-hidden flex items-center justify-center">
+  <div
+    class="absolute inset-0 bg-cover bg-center z-0"
+    style={`background-image: url('${bild}')`}
+  ></div>
+  <div class="absolute inset-0 bg-[#1D1B18]/20 z-10"></div>
+  <div class="relative z-20 text-center px-4 max-w-4xl">
+    <h1 class="font-headline text-5xl md:text-7xl lg:text-[84px] text-surface mb-8 leading-tight tracking-wide">
+      {titel}
+    </h1>
+    <p class="font-body uppercase tracking-[0.2em] text-surface-bright text-sm md:text-base mb-12">
+      {untertitel}
+    </p>
+    <a
+      href={ctaLink}
+      class="inline-block px-10 py-4 border-2 border-primary text-primary font-body uppercase tracking-widest text-sm hover:bg-primary hover:text-white transition-all duration-500"
+    >
+      {ctaText}
+    </a>
+  </div>
+</header>

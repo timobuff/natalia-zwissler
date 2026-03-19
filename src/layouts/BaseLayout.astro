@@ -1,0 +1,72 @@
+---
+export interface Props {
+  title?: string;
+}
+const { title = "Natalia Zwissler Keramik" } = Astro.props;
+---
+<!DOCTYPE html>
+<html class="light" lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-bright": "#fef9f2",
+            "on-primary": "#ffffff",
+            "surface-container-high": "#ece7e1",
+            "on-background": "#1d1b18",
+            "on-surface": "#1d1b18",
+            "surface-variant": "#e6e2dc",
+            "primary": "#7b533c",
+            "secondary": "#655d55",
+            "primary-fixed": "#ffdbc9",
+            "primary-fixed-dim": "#f0bb9e",
+            "outline": "#83746d",
+            "outline-variant": "#d5c3ba",
+            "tertiary": "#5e5b58",
+            "inverse-on-surface": "#f5f0ea",
+            "primary-container": "#976b52",
+            "on-surface-variant": "#51443e",
+            "surface-container-lowest": "#ffffff",
+            "secondary-container": "#e9ded3",
+            "surface-container": "#f2ede7",
+            "surface-container-highest": "#e6e2dc",
+            "surface-container-low": "#f8f3ed",
+            "background": "#fef9f2",
+            "surface": "#fef9f2",
+          },
+          fontFamily: {
+            "headline": ["Cormorant Garamond", "serif"],
+            "body": ["DM Sans", "sans-serif"],
+            "label": ["DM Sans", "sans-serif"]
+          },
+          borderRadius: { "DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "9999px" },
+        },
+      },
+    }
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+    }
+    .editorial-shadow {
+      box-shadow: 20px 20px 0px 0px rgba(123, 83, 60, 0.05);
+    }
+    body {
+      background-color: #FEF9F2;
+      color: #1D1B18;
+      -webkit-font-smoothing: antialiased;
+    }
+  </style>
+</head>
+<body class="font-body">
+  <slot />
+</body>
+</html>
